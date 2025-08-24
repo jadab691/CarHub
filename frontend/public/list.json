@@ -1,0 +1,83 @@
+[
+    {
+        "id": "1",
+        "name": "React",    
+        "title": "Toyota Crown Crossover",
+        "price": "Free",
+        "catagory": "Frontend",
+        "image": "https://s3-ap-southeast-1.amazonaws.com/motoristprod/editors%2Fimages%2F1657952360753-Crown+Crossover.jpg",
+        "discription":"A luxury sedan with a royal vibe"
+    },
+    {
+        "id": "2",
+        "name": "Tailwind CSS",
+        "title": "Lamborghini Urus",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"A luxury sedan with a royal vibe",
+        "image": "https://www.mansory.com/cdn-cgi/image/format=avif,quality=90/https://cdn.prod.website-files.com/661d6e0d2e84ef511db18f17/6818c54c22e27f41ae1417b9_Venatus%2520S-Hero_image-001.webp"
+    },
+    {
+        "id": "3",
+        "name": "DaisyUI",
+        "title": "Honda Accord",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Sleek and executive sounding",
+        "image": "https://di-uploads-pod12.dealerinspire.com/beavertonhondaredesign/uploads/2022/03/picture-of-honda-accord-hybrid.png"
+    },
+    {
+        "id": "4",
+        "name": "Vite",
+        "title": "Nissan Skyline",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Sporty, legendary in Japan",
+        "image": "https://www.nissanusa.com/content/dam/Nissan/us/experience_nissan/newsevents/skyline-to-gt-r/1998-Nissan-Skyline-25GT-Turbo-in-Black.jpg.ximg.l_full_m.smart.jpg"
+    },
+    {
+        "id": "5",
+        "name": "ESLint",
+        "title": "Mazda Atenza (Mazda6)",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Classy and elegant name",
+        "image": "https://ichelabamotor.com/wp-content/uploads/slider/cache/e157da3a005fbad2b65a1bd9b8367aaf/Mazda-Atenza-Details-38.jpg"
+    },
+    {
+        "id": "6",
+        "name": "PostCSS",
+        "title": "Mitsubishi Eclipse Cross",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Stylish, “Eclipse” feels cosmic",
+        "image": "https://www.carscoops.com/wp-content/uploads/2022/11/Mitsubishi-Eclipse-Cross-Black-Edition-main.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Autoprefixer",
+        "title": "BMW i8",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Futuristic hybrid supercar",
+        "image": "https://s1.cdn.autoevolution.com/images/news/bmw-i8-rendered-as-proper-race-car-96047_1.jpg"
+    },
+    {
+        "id": "8",
+        "name": "React Refresh",
+        "title": "Jaguar F-Type",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Exotic sports car",
+        "image": "https://di-uploads-pod12.dealerinspire.com/jaguarlouisville/uploads/2023/03/Jaguar-F-TYPE-R75-2303.jpg"
+    },
+    {
+        "id": "9",
+        "name": "React Hooks ESLint Plugin",
+        "title": "Ferrari Portofino",
+        "price": "Free",
+        "catagory": "Frontend",
+        "discription":"Fancy Italian coastal town inspired",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG9l2OYXmBk_Od7JkJ8YmVy0h1QDD7MU3k-g&s"
+    }
+]
