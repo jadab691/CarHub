@@ -53,7 +53,7 @@ function Banner() {
         <div className="w-full md:w-1/2 ml-10 rounded-2xl mt-2.5 flex justify-center flex-col items-center">
           <img
             src={Car1}
-            className="order-1 bg-transparent hover:scroll-m-10 rounded-tl-full "
+            className="order-1 bg-transparent hover:scroll-m-10 rounded-tl-full duration-300 hover:rounded-br-full hover:rounded-tl-none"
             alt=""
           />
           <br />
