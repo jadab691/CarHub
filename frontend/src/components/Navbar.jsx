@@ -2,6 +2,7 @@ import { set } from "lodash";
 import React, { use, useEffect } from "react";
 import { useState } from "react";
 import Login from "./Login";
+import Search from "./Search";
 
 function Navbar() {
   //dark theme controller
@@ -57,10 +58,10 @@ function Navbar() {
 
   return (
     <div
-      className={`max-w-screen-2xl w-screen container mx-auto md:px-5 px-4 fixed   top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
+      className={`max-w-screen-2xl w-screen container mx-auto md:px-5 px-4 fixed  top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
     ${
       sticky
-        ? "sticky-navbar shadow-amber-400  bg-blue-100 border-amber-100  duration-400 transition-all ease-in-out"
+        ? "sticky-navbar shadow-amber-400  bg-current border-amber-100  duration-400 transition-all ease-in-out"
         : ""
     }`}
     >
@@ -108,28 +109,8 @@ function Navbar() {
           </div>
 
           {/* search button */}
-          <div className="hidden md:block">
-            <label className="input">
-              <svg
-                className="h-[1em] opacity-50"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.3-4.3"></path>
-                </g>
-              </svg>
-              <input type="search" required placeholder="Search" />
-            </label>
-          </div>
-
+              <Search />
+              
           {/* dark theme controller */}
           <div>
             <label
