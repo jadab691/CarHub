@@ -1,6 +1,7 @@
 import React from "react";
 import Car1RemoveBG from "../../public/car1-removedBG.png";
 import Car1 from "../../public/car1.jpg";
+import carhub from "../../public/carhub.jpg"
 
 function Banner() {
   return (
@@ -11,7 +12,7 @@ function Banner() {
             <h1 className="text-4xl font-bold mb-5">
               Hello , Welcome to the <span className="text-gray-400">Car</span>
               <span className="text-yellow-400 mb-4">Hub</span> <br />
-              <span className="text-gray-500 text-2xl font-light">
+              <span className="text-[#FF7ED4] text-2xl font-light">
                 here you can find the best cars available in the market.
               </span>{" "}
               <br />
@@ -52,8 +53,8 @@ function Banner() {
         </div>
         <div className="w-full md:w-1/2 ml-10 rounded-2xl mt-2.5 flex justify-center flex-col items-center">
           <img
-            src={Car1}
-            className="order-1 bg-transparent hover:scroll-m-10 rounded-tl-full duration-600 hover:rounded-br-full hover:rounded-tl-none"
+            src={carhub}
+            className="order-1 bg-transparent hover:scroll-m-10 rounded-tl-full duration-600 rounded-br-full hover:rounded-tl-none"
             alt=""
           />
           <br />

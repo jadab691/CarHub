@@ -14,8 +14,8 @@ function Cards({ item }) {
               alt="Shoes"
             />
           </figure>
-          <div className="card-body">
-            <h2 className="card-title hover:text-blue-400 cursor-pointer hover:scale-97 transition-all duration-300 ease-out ">
+          <div className="card-body bg-[#092635]">
+            <h2 className="card-title hover:text-[#FF7ED4] cursor-pointer hover:scale-97 transition-all duration-300 ease-out ">
               {item.title}
               <div className="badge badge-secondary">NEW</div>
             </h2>

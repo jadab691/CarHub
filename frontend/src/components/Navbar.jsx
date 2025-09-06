@@ -61,7 +61,7 @@ function Navbar() {
       className={`max-w-screen-2xl w-screen container mx-auto md:px-5 px-4 fixed  top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
     ${
       sticky
-        ? "sticky-navbar shadow-amber-400  bg-current border-amber-100  duration-400 transition-all ease-in-out"
+        ? "sticky-navbar shadow-amber-400  bg-[#211951] border-amber-100   duration-400 transition-all ease-in-out"
         : ""
     }`}
     >
@@ -101,7 +101,7 @@ function Navbar() {
           <div className="navbar-center hidden lg:flex">
             <ul
               className={`menu menu-horizontal px-1 ${
-                sticky ? "text-black" : ""
+                sticky ? "text-[#FF7ED4]" : ""
               }`}
             >
               {navItems}
@@ -114,7 +114,7 @@ function Navbar() {
           {/* dark theme controller */}
           <div>
             <label
-              className={`swap swap-rotate ${sticky ? "text-black " : ""}`}
+              className={`swap swap-rotate ${sticky ? "text-[#FF7ED4]" : ""}`}
             >
               {/* this hidden checkbox controls the state */}
               <input
@@ -147,7 +147,7 @@ function Navbar() {
 
           {/* Login button */}
           <div className="">
-            <a className={`btn  ${sticky ? "bg-black text-red-50" : "bg-red"}`}
+            <a className={`btn  ${sticky ? "bg-black text-[#FF7ED4]" : "bg-red"}`}
             onClick={() => document.getElementById("my_modal_3").showModal()}
             >
               Login
