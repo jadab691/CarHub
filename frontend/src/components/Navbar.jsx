@@ -3,6 +3,7 @@ import React, { use, useEffect } from "react";
 import { useState } from "react";
 import Login from "./Login";
 import Search from "./Search";
+import About from "./About";
 
 function Navbar() {
   //dark theme controller
@@ -51,7 +52,7 @@ function Navbar() {
           <a>Contact</a>
         </li>
         <li>
-          <a>About</a>
+          <a href="/About">About</a>
         </li>
       </>
     );
@@ -109,8 +110,8 @@ function Navbar() {
           </div>
 
           {/* search button */}
-              <Search />
-              
+          <Search />
+
           {/* dark theme controller */}
           <div>
             <label
@@ -147,8 +148,11 @@ function Navbar() {
 
           {/* Login button */}
           <div className="">
-            <a className={`btn  ${sticky ? "bg-black text-[#FF7ED4]" : "bg-red"}`}
-            onClick={() => document.getElementById("my_modal_3").showModal()}
+            <a
+              className={`btn  ${
+                sticky ? "bg-black text-[#FF7ED4]" : "bg-red"
+              }`}
+              onClick={() => document.getElementById("my_modal_3").showModal()}
             >
               Login
             </a>

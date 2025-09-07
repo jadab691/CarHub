@@ -6,9 +6,9 @@ function Search() {
   const [query, setQuery] = useState(""); // user input
   const [results, setResults] = useState([]); // filtered cars
   const [carsData, setCarsData] = useState([]); // all cars
-  const navigate = useNavigate(); // React Router navigation
+  const navigate = useNavigate(); 
 
-  // Fetch car data from public/list.json
+  // fetch car data from list.json
   useEffect(() => {
     fetch("/list.json")
       .then((res) => res.json())
@@ -73,7 +73,7 @@ function Search() {
             {results.map((car) => (
               <div 
                 key={car.id}
-                className="p-2 hover:bg-gray-200 cursor-pointer flex  items-center space-x-2"
+                className="p-2 hover:bg-gray-600  cursor-pointer flex  items-center space-x-2"
                 onClick={() => handleCarClick(car.id)} // Navigate on click
               >
                 <img
