@@ -1,10 +1,25 @@
 import React from "react";
-import list from "../../public/list.json";
 import Cars from "../cars/Cars";
 import Cards from "./Cards";
 import { Link } from "react-router-dom";
+import { use } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function Car() {
+  const [car, setCar] = useState([]);
+  useEffect(() => {
+    const getCar = async () => {
+      try {
+        const res = await axios.get("http://localhost:4001/car");
+        console.log(res.data);
+        setCar(res.data);
+      } catch (error) {
+        console.error("error :", error);
+      }
+    };
+    getCar();
+  }, []);
   return (
     <>
       <div className="max-w-screen container mx-auto md:px-20 px-4">
@@ -25,10 +40,10 @@ function Car() {
           </Link>
         </div>
         <div className="mt-15 grid grid-cols-1 md:grid-cols-3  ">
-          {list.map((item) => (
+          {car.map((item) => (
             <Cards key={item.title} item={item} />
           ))}
-          {list.map((item) => (
+          {car.map((item) => (
             <Cards key={item.title} item={item} />
           ))}
         </div>
