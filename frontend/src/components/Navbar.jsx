@@ -4,10 +4,13 @@ import { useState } from "react";
 import Login from "./Login";
 import Search from "./Search";
 import About from "./About";
+import { useAuth } from "../context/AuthProvider.jsx";
+import Logout from "./Logout.jsx";
 
 function Navbar() {
-  //dark theme controller
+  const [authUser, setAuthUser] = useAuth();
 
+  //dark theme controller
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -146,18 +149,27 @@ function Navbar() {
             </label>
           </div>
 
-          {/* Login button */}
-          <div className="">
-            <a
-              className={`btn  ${
-                sticky ? "bg-black text-[#FF7ED4]" : "bg-red"
-              }`}
-              onClick={() => document.getElementById("my_modal_3").showModal()}
-            >
-              Login
-            </a>
-            <Login />
-          </div>
+          {/* Login button  or logut button */}
+
+          {authUser ? (
+            <Logout />
+          ) : (
+            <div className="">
+              <a
+                className={`btn  ${
+                  sticky ? "bg-black text-[#FF7ED4]" : "bg-red"
+                }`}
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                Login
+              </a>
+              <Login />
+            </div>
+          )}
+
+          
         </div>
       </div>
     </div>

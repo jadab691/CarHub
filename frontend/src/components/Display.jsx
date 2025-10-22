@@ -13,7 +13,7 @@ function Display() {
     const getCar = async () => {
       try {
         const res = await axios.get("http://localhost:4001/car");
-        console.log(res.data);
+        // console.log(res.data);
         setCar(res.data.filter((data) => data.catagory === "Frontend"));
       } catch (error) {
         console.error("error :", error);
@@ -22,7 +22,7 @@ function Display() {
     getCar();
   }, []);
   const filterData = car.filter((data) => data.catagory === "Frontend");
-  console.log(filterData);
+  // console.log(filterData);
   var settings = {
     dots: true,
     infinite: false,

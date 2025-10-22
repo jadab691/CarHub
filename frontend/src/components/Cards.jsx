@@ -2,7 +2,7 @@ import React from "react";
 import Display from "./Display";
 
 function Cards({ item }) {
-  console.log(item);
+  // console.log(item);
   return (
     <>
       <div className="pb-3 hover:scale-105 duration-300">
