@@ -1,26 +1,22 @@
-import React from "react";
 import Home from "./home/Home";
 import Cars from "./cars/Cars";
-import { Navigate, BrowserRouter, Routes, Route } from "react-router-dom";
-import Signup from "./components/Signup";
+import { Routes, Route } from "react-router-dom";
+import Signup from "./components/Register";
 import CarsProfile from "./components/CarsProfile";
 import About from "./components/About";
-import { useAuth } from "./context/AuthProvider.jsx";
-
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 function App() {
-  const [authUser, setAuthUser] = useAuth();
-  console.log(authUser);
   return (
-    <div className="dark:bg-slate-900 dark:text-white ">
+    <div className=" ">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route
-          path="/cars"
-          element={authUser ? <Cars /> : <Navigate to="/signup" />}
-        />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/cars/:id" element={<CarsProfile />} /> 
+        <Route path="/cars" element={<Cars />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/cars/:id" element={<CarsProfile />} /> {/* new route */}
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

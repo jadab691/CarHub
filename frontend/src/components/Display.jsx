@@ -1,27 +1,12 @@
 import React from "react";
+import list from "../../public/list.json";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Cards from "./Cards";
-import axios from "axios";
-import { useState, useEffect } from "react";
-// import list from "../data/Data";
 
 function Display() {
-  const [car, setCar] = useState([]);
-  useEffect(() => {
-    const getCar = async () => {
-      try {
-        const res = await axios.get("http://localhost:4001/car");
-        // console.log(res.data);
-        setCar(res.data.filter((data) => data.catagory === "Frontend"));
-      } catch (error) {
-        console.error("error :", error);
-      }
-    };
-    getCar();
-  }, []);
-  const filterData = car.filter((data) => data.catagory === "Frontend");
+  const filterData = list.filter((data) => data.catagory === "Frontend");
   // console.log(filterData);
   var settings = {
     dots: true,
@@ -72,7 +57,7 @@ function Display() {
         {/* slder container  */}
         <div className="slider-container ">
           <Slider {...settings}>
-            {car.map((item) => (
+            {filterData.map((item) => (
               <Cards item={item} key={item.id} />
             ))}
           </Slider>
