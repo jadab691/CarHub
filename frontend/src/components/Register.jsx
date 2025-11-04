@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Register() {
   const navigate = useNavigate(); //for navigation after registration
@@ -35,62 +37,59 @@ function Register() {
   //   console.log(values);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <button
-        className="absolute top-4 left-4 bg-blue-500 text-white px-4 py-2 
-        rounded hover:bg-blue-600 cursor-pointer"
-        onClick={() => navigate("/")}
-      >
-        Home
-      </button>
-      <div className="w-1/3 px-8 py - 6 border rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700"></label>
-            <input
-              type="text"
-              placeholder="Enter UserName"
-              className="w-full px-3 py-6 border"
-              name="username"
-              onChange={handleChanges}
-            />
+    <>
+      <Navber />
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-1/3 px-8 py - 6 border rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label htmlFor="username" className="block text-gray-700"></label>
+              <input
+                type="text"
+                placeholder="Enter UserName"
+                className="w-full px-3 py-6 border"
+                name="username"
+                onChange={handleChanges}
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="email" className="block text-gray-700"></label>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                className="w-full px-3 py-6 border"
+                name="email"
+                onChange={handleChanges}
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="password" className="block text-gray-700"></label>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                className="w-full px-3 py-6 border"
+                name="password"
+                onChange={handleChanges}
+              />
+            </div>
+            <button
+              className="w-full bg-green-600 text-white py-2 cursor-pointer"
+              // onClick={gotoLogin}
+            >
+              Submit
+            </button>
+          </form>
+          <div>
+            <span>Already have account ? </span>
+            <Link to="/login" className="text-blue-700">
+              Login
+            </Link>
           </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700"></label>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              className="w-full px-3 py-6 border"
-              name="email"
-              onChange={handleChanges}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700"></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              className="w-full px-3 py-6 border"
-              name="password"
-              onChange={handleChanges}
-            />
-          </div>
-          <button
-            className="w-full bg-green-600 text-white py-2 cursor-pointer"
-            // onClick={gotoLogin}
-          >
-            Submit
-          </button>
-        </form>
-        <div>
-          <span>Already have account ? </span>
-          <Link to="/login" className="text-blue-700">
-            Login
-          </Link>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Login() {
   const [values, setValues] = useState({
@@ -38,58 +39,55 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <button
-        className="absolute top-4 left-4 bg-blue-500 text-white px-4 py-2 
-        rounded hover:bg-blue-600 cursor-pointer"
-        onClick={() => navigate("/")}
-      >
-        Home
-      </button>
-      <div className="w-1/3 px-8 py-6 border rounded-lg shadow-lg">
-        {" "}
-        {/* ✅ fixed py-6 */}
-        <h2 className="text-2xl font-bold mb-6 text-red-500 text-center">
-          Login
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <input
-              type="email"
-              placeholder="Enter Email"
-              className="w-full px-3 py-2 border rounded"
-              name="email"
-              onChange={handleChanges}
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <input
-              type="password"
-              placeholder="Enter Password"
-              className="w-full px-3 py-2 border rounded"
-              name="password"
-              onChange={handleChanges}
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-pink-700 text-white py-2 rounded hover:bg-pink-800"
-          >
+    <>
+      <Navbar />
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-1/3 px-8 py-6 border rounded-lg shadow-lg">
+          {" "}
+          {/* ✅ fixed py-6 */}
+          <h2 className="text-2xl font-bold mb-6 text-red-500 text-center">
             Login
-          </button>
-        </form>
-        <div className="mt-4 text-center">
-          <span>Don't have an account? </span>
-          <Link to="/register" className="text-blue-500 hover:underline">
-            Signup
-          </Link>
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Enter Email"
+                className="w-full px-3 py-2 border rounded"
+                name="email"
+                onChange={handleChanges}
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <input
+                type="password"
+                placeholder="Enter Password"
+                className="w-full px-3 py-2 border rounded"
+                name="password"
+                onChange={handleChanges}
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-pink-700 text-white py-2 rounded hover:bg-pink-800"
+            >
+              Login
+            </button>
+          </form>
+          <div className="mt-4 text-center">
+            <span>Don't have an account? </span>
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Signup
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

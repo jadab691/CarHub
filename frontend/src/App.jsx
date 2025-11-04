@@ -6,6 +6,9 @@ import CarsProfile from "./components/CarsProfile";
 import About from "./components/About";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
+import BuySale from "./components/BuySale";
+import Buy from "./components/Buy";
+import Sale from "./components/Sale";
 function App() {
   return (
     <div className=" ">
@@ -17,6 +20,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/buysale" element={<BuySale />}></Route>
+        <Route path="/buy" element={<Buy />} />
+        <Route path="/sale" element={<Sale />} />
+        
       </Routes>
     </div>
   );

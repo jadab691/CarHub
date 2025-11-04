@@ -1,7 +1,7 @@
 import React from "react";
 import Jadab from "../../public/jadab.jpg";
 import Navbar from "./Navbar";
-
+import Footer from "./Footer";
 function About() {
   return (
     <>
@@ -26,6 +26,7 @@ function About() {
 
         <div className="w-full md:w-1/2 order-2 md:order-0 mt-12 mb-25 md:mt-25"></div>
       </div>
+      <Footer />
     </>
   );
 }

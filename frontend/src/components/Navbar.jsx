@@ -55,6 +55,17 @@ function Navbar() {
         <li>
           <a href="/About">About</a>
         </li>
+        {/*buy or sell jofi login thake ?*/}
+        <li>
+          {login_ache ? (
+            <a href="/BuySale">
+              <div>Buy</div>
+              <div>Sale</div>
+            </a>
+          ) : (
+            ""
+          )}
+        </li>
       </>
     );
 
@@ -94,7 +105,7 @@ function Navbar() {
               {navItems}
             </ul>
           </div>
-          <a className=" text-2xl font-bold cursor-pointer">
+          <a className=" text-2xl font-bold cursor-pointer ">
             <span className="text-gray-400">Car</span>
             <span className="text-yellow-400 mb-4">Hub</span>
           </a>
@@ -133,11 +144,11 @@ function Navbar() {
           <div>
             {login_ache ? (
               <button
-                className="btn px-4 py-2 rounded-md bg-pink-900 border-black text-gray-200
+                className="btn px-4 py-2 rounded-md bg-yellow-800 border-black text-white
                  hover:bg-blue-800 shadow-md transition duration-200 "
                 onClick={handleProfile}
               >
-                {name}
+                {name}'s Profile
               </button>
             ) : (
               <a
