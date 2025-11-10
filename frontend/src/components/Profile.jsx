@@ -7,16 +7,26 @@ import Footer from "./Footer";
 function Profile() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [userCars, setUserCars] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return navigate("/login");
 
+    // Get user info
     axios
       .get("http://localhost:3000/auth/home", {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => setUser(res.data.user))
+      .then((res) => {
+        setUser(res.data.user);
+
+        // Get user’s cars
+        axios
+          .get(`http://localhost:3000/cars/user/${res.data.user.id}`)
+          .then((res) => setUserCars(res.data))
+          .catch((err) => console.error(err));
+      })
       .catch(() => navigate("/login"));
   }, [navigate]);
 
@@ -26,17 +36,17 @@ function Profile() {
     navigate("/login");
   };
 
-  const handleHome = () => {
-    navigate("/"); // navigate to home page
-  };
+  const handleHome = () => navigate("/");
 
-  if (!user) return <p className="text-center mt-10 text-white">Loading...</p>;
+  if (!user)
+    return <p className="text-center mt-10 text-white text-xl">Loading...</p>;
 
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-900 flex justify-center items-center p-4 relative">
-        <div className="bg-gray-800 rounded-xl p-8 max-w-sm w-full shadow-lg">
+      <div className="min-h-screen mt-20 bg-gray-900 flex flex-col items-center p-4">
+        {/* Profile Card */}
+        <div className="bg-gray-800 rounded-xl p-8 max-w-md w-full shadow-lg mb-10">
           <h2 className="text-2xl font-bold mb-6 text-center text-yellow-400">
             Profile
           </h2>
@@ -60,11 +70,90 @@ function Profile() {
           </div>
 
           <button
-            className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md transition"
+            className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md mb-3 transition"
             onClick={handleLogout}
           >
             Logout
           </button>
+
+          <button
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
+            onClick={handleHome}
+          >
+            Back to Home
+          </button>
+        </div>
+
+        {/* User’s Cars */}
+        <div className="max-w-5xl w-full">
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Your Posted Cars
+          </h2>
+          {userCars.length === 0 ? (
+            <p className="text-gray-300">You haven’t posted any cars yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {userCars.map((car) => (
+                <div
+                  key={car.id}
+                  className="bg-[#081f28] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <img
+                    src={`http://localhost:3000/uploads/${car.image}`}
+                    alt={car.name}
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {car.name}
+                    </h3>
+                    <p className="text-gray-300 mb-1">{car.model}</p>
+                    <p className="font-semibold text-green-400 mb-2">
+                      Price: ${car.price}
+                    </p>
+                    <p className="text-gray-200 mb-2 line-clamp-3">
+                      {car.description}
+                    </p>
+
+                    {/* Delete Button */}
+                    <button
+                      className="w-full bg-red-600 hover:bg-red-700 text-white py-1 rounded-md mt-2 transition"
+                      onClick={async () => {
+                        if (
+                          window.confirm(
+                            "Are you sure you want to delete this car?"
+                          )
+                        ) {
+                          try {
+                            const token = localStorage.getItem("token");
+                            await axios.delete(
+                              `http://localhost:3000/cars/${car.id}`,
+                              {
+                                headers: { Authorization: `Bearer ${token}` },
+                              }
+                            );
+
+                            // Remove deleted car from state
+                            setUserCars(
+                              userCars.filter((c) => c.id !== car.id)
+                            );
+                          } catch (err) {
+                            console.error("Failed to delete car:", err);
+                            alert(
+                              err.response?.data?.message ||
+                                "Failed to delete car"
+                            );
+                          }
+                        }
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <Footer />
