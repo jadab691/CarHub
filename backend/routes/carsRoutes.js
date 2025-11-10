@@ -60,11 +60,13 @@ router.get("/", async (req, res) => {
   try {
     const db = await connectTODatabase();
     const [rows] = await db.query(
-      `SELECT cars.id, cars.name, cars.model, cars.price, cars.description, cars.image, users.username 
-       FROM cars 
-       JOIN users ON cars.user_id = users.id 
-       ORDER BY cars.created_at DESC`
+      `SELECT cars.id, cars.name, cars.model, cars.price, cars.description, cars.image, users.username
+   FROM cars
+   JOIN users ON cars.user_id = users.id
+   WHERE cars.sold = FALSE
+   ORDER BY cars.created_at DESC`
     );
+
     res.status(200).json(rows);
   } catch (err) {
     console.error(err);
@@ -113,5 +115,64 @@ router.delete("/:id", verifyToken, async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
+
+// Buy a car
+router.post("/buy/:id", verifyToken, async (req, res) => {
+  try {
+    const db = await connectTODatabase();
+    const carId = req.params.id;
+    const userId = req.userId;
+
+    // Check if car exists
+    const [carRows] = await db.query(
+      "SELECT * FROM cars WHERE id = ? AND sold = FALSE",
+      [carId]
+    );
+    if (carRows.length === 0)
+      return res.status(404).json({ message: "Car not found or already sold" });
+
+    // Prevent buying own car
+    if (carRows[0].user_id === userId)
+      return res.status(400).json({ message: "You cannot buy your own car" });
+
+    // Record the buy
+    await db.query("INSERT INTO buys (user_id, car_id) VALUES (?, ?)", [
+      userId,
+      carId,
+    ]);
+
+    // Mark car as sold instead of deleting
+    await db.query("UPDATE cars SET sold = TRUE WHERE id = ?", [carId]);
+
+    res.status(200).json({ message: "Car bought successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
+// GET /buys/user/:userId - fetch cars bought by user
+router.get("/buys/user/:userId", verifyToken, async (req, res) => {
+  try {
+    const db = await connectTODatabase();
+    const userId = req.params.userId;
+
+    const [rows] = await db.query(
+      `SELECT cars.id, cars.name, cars.model, cars.price, cars.description, cars.image, users.username
+       FROM buys
+       JOIN cars ON buys.car_id = cars.id
+       JOIN users ON cars.user_id = users.id
+       WHERE buys.user_id = ?
+       ORDER BY buys.id DESC`,
+      [userId]
+    );
+
+    res.status(200).json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
 
 export default router;

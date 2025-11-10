@@ -6,26 +6,41 @@ import Footer from "./Footer";
 
 function Profile() {
   const navigate = useNavigate();
+
+  // State
   const [user, setUser] = useState(null);
-  const [userCars, setUserCars] = useState([]);
+  const [userCars, setUserCars] = useState([]); // posted cars
+  const [boughtCars, setBoughtCars] = useState([]); // bought cars
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) return navigate("/login");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
 
-    // Get user info
+    // Fetch user info
     axios
       .get("http://localhost:3000/auth/home", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
+        const userId = res.data.user.id;
         setUser(res.data.user);
 
-        // Get user’s cars
+        // Fetch user's posted cars
         axios
-          .get(`http://localhost:3000/cars/user/${res.data.user.id}`)
+          .get(`http://localhost:3000/cars/user/${userId}`)
           .then((res) => setUserCars(res.data))
           .catch((err) => console.error(err));
+
+        // Fetch user's bought cars
+        axios
+          .get(`http://localhost:3000/cars/buys/user/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => setBoughtCars(res.data))
+          .catch((err) => console.error("Failed to fetch bought cars:", err));
       })
       .catch(() => navigate("/login"));
   }, [navigate]);
@@ -44,6 +59,7 @@ function Profile() {
   return (
     <>
       <Navbar />
+
       <div className="min-h-screen mt-20 bg-gray-900 flex flex-col items-center p-4">
         {/* Profile Card */}
         <div className="bg-gray-800 rounded-xl p-8 max-w-md w-full shadow-lg mb-10">
@@ -84,9 +100,9 @@ function Profile() {
           </button>
         </div>
 
-        {/* User’s Cars */}
-        <div className="max-w-5xl w-full">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        {/* User’s Posted Cars */}
+        <div className="max-w-5xl w-full mb-12">
+          <h2 className="text-2xl font-bold text-yellow-400 mb-6">
             Your Posted Cars
           </h2>
           {userCars.length === 0 ? (
@@ -132,8 +148,6 @@ function Profile() {
                                 headers: { Authorization: `Bearer ${token}` },
                               }
                             );
-
-                            // Remove deleted car from state
                             setUserCars(
                               userCars.filter((c) => c.id !== car.id)
                             );
@@ -155,7 +169,48 @@ function Profile() {
             </div>
           )}
         </div>
+
+        {/* User’s Bought Cars */}
+        <div className="max-w-5xl w-full">
+          <h2 className="text-2xl font-bold text-orange-400 mb-6">
+            Cars You Bought
+          </h2>
+          {boughtCars.length === 0 ? (
+            <p className="text-gray-300">You haven’t bought any cars yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {boughtCars.map((car) => (
+                <div
+                  key={car.id}
+                  className="bg-[#081f28] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <img
+                    src={`http://localhost:3000/uploads/${car.image}`}
+                    alt={car.name}
+                    className="h-48 w-full object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {car.name}
+                    </h3>
+                    <p className="text-gray-300 mb-1">{car.model}</p>
+                    <p className="font-semibold text-green-400 mb-2">
+                      Price: ${car.price}
+                    </p>
+                    <p className="text-gray-200 mb-2 line-clamp-3">
+                      {car.description}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Seller: {car.username}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
+
       <Footer />
     </>
   );
