@@ -105,7 +105,7 @@ function Navbar() {
               {navItems}
             </ul>
           </div>
-          <a className=" text-2xl font-bold cursor-pointer ">
+          <a className=" text-2xl font-bold cursor-pointer " href="/">
             <span className="text-gray-400">Car</span>
             <span className="text-yellow-400 mb-4">Hub</span>
           </a>
