@@ -3,5 +3,97 @@
 @custom-variant dark (&:where(.dark, .dark *));
 /* @custom-variant light (&:where(.light, .light *)); */
 
+/* Light Cyber Neon Theme Base */
+body {
+  background-color: #000; /* soft black / dark gray */
+  margin: 0;
+  padding: 0;
+  transition: background 0.2s;
+}
 
+/* Subtle Neon Glow Text (no color) */
+.neon-text, h1, h2, h3, p, a, label, span {
+  text-shadow:
+    0 0 1px #ac264aff,   /* soft pink */
+    0 0 3px #0a3636ff;   /* soft cyan */
+}
 
+/* Gentle Glow Animation for Titles */
+@keyframes softPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 1px #601360ff,
+      0 0 3px #094141ff;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #ece3ecff,
+      0 0 6px #2cd2d2ff;
+  }
+}
+
+h1, h2 {
+  animation: softPulse 2s infinite alternate;
+}
+
+/* Buttons */
+button, .btn {
+  background: rgba(255, 128, 255, 0.05); /* faint pink */
+  border: 1px solid #ff66cc;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-shadow: 0 0 2px #ff80ff;
+  box-shadow: 0 0 4px #ff80ff, 0 0 6px #80ffff;
+  transition: all 0.2s ease;
+}
+
+button:hover, .btn:hover {
+  background: #481c3aff;
+  box-shadow: 0 0 8px #462846ff, 0 0 15px #264747ff;
+}
+
+/* Inputs */
+input, textarea {
+  background: #1a1a1a;
+  border: 1px solid #3a1d31ff;
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  box-shadow: 0 0 3px #80ffff inset;
+}
+
+input:focus, textarea:focus {
+  border-color: #331b33ff;
+  box-shadow: 0 0 5px #ff80ff inset, 0 0 5px #80ffff inset;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 4px #ff80ff, 0 0 8px #80ffff;
+}
+
+/* Cards / Containers */
+.card {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #423d40ff;
+  border-radius: 15px;
+  box-shadow: 0 0 6px #2f1e2fff, 0 0 10px #80ffff;
+  transition: 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 0 12px #ff80ff, 0 0 18px #80ffff;
+}
+
+/* Text Selection */
+::selection {
+  background: #ff66cc;
+  color: #000;
+}

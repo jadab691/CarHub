@@ -7,24 +7,16 @@ import Footer from "../components/Footer";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
 
-  // Start with 1s white screen
+  // Start neon animation for 2s, then fade out
   useEffect(() => {
-    const timer = setTimeout(() => setShowVideo(true), 1000); // 1s white
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => setFadeOut(true), 2000); // after 2s start fade
+    const removeTimer = setTimeout(() => setLoading(false), 2500); // total 2.5s
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(removeTimer);
+    };
   }, []);
-
-  // Trigger fade on video end
-  const handleVideoEnd = () => setFadeOut(true);
-
-  // Remove overlay after fade transition + last 1s white
-  useEffect(() => {
-    if (fadeOut) {
-      const timer = setTimeout(() => setLoading(false), 0); // 1s fade to white
-      return () => clearTimeout(timer);
-    }
-  }, [fadeOut]);
 
   return (
     <>
@@ -36,38 +28,52 @@ function Home() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "#1b0543ff", // start with white screen
+            backgroundColor: "#000",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             zIndex: 9999,
             opacity: fadeOut ? 0 : 1,
-            transition: "opacity .5s ease",
+            transition: "opacity 0.5s ease",
           }}
         >
-          {showVideo && (
-            <video
-              src="/intro.mp4"
-              autoPlay
-              muted
-              onEnded={handleVideoEnd}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-          )}
+          <h1 className="text-6xl font-bold text-white neon-text">CarHub</h1>
+
+          <style>
+            {`
+              .neon-text {
+                color: #fff;
+                text-shadow: 
+                  0 0 5px #00ffff,
+                  0 0 10px #00ffff,
+                  0 0 20px #00ffff,
+                  0 0 40px #00ffff,
+                  0 0 80px #00ffff;
+                animation: flicker 2s ease-in-out forwards;
+                letter-spacing: 3px;
+              }
+
+              @keyframes flicker {
+                0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                  opacity: 1;
+                }
+                20%, 24%, 55% {
+                  opacity: 0.2;
+                }
+              }
+            `}
+          </style>
         </div>
       )}
 
       {!loading && (
         <>
-          <Navbar />
-          <Banner />
-          <Display />
-          <Footer />
+          <div className=" max-h-fit w-full">
+            <Navbar />
+            <Banner />
+            <Display />
+            <Footer />
+          </div>
         </>
       )}
     </>

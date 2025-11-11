@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="pt-10">
+    <div className="pt-10  ">
         <hr />
       <footer className="footer footer-horizontal footer-center  text-base-content rounded p-10">
         <nav className="grid grid-flow-col gap-4">

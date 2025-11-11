@@ -71,7 +71,7 @@ function Navbar() {
 
   return (
     <div
-      className={`max-w-screen-2xl w-screen container mx-auto md:px-5 px-4 fixed  top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
+      className={`max-w-screen-2xl  w-screen container mx-auto md:px-5 px-4 fixed  top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
     ${
       sticky
         ? "sticky-navbar shadow-amber-400  bg-[#211951] border-amber-100   duration-400 transition-all ease-in-out"

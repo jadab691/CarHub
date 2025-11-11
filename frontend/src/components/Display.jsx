@@ -45,12 +45,11 @@ function Display() {
   return (
     <>
       <div className="max-w-screen-2xl cntainer mx-auto md:px-20 py-4">
-        <h1 className="font-semibold text-xl pb-2">New Arrival</h1>
+        <h1 className="font-semibold text-xl text-amber-950 pb-2">New Arrival</h1>
 
-        <div className="pt-1 pb-10">
+        <div className="pt-1 pb-10 text-pink-300">
           <p>
-            Lorem, ipsum dolor. Harum, nam alias. Magni, enim ipsa! Adipisci,
-            veniam beatae?
+            Here You Can Find The Most Popular Cars of The Era .
           </p>
         </div>
         {/* card container  */}
