@@ -71,13 +71,13 @@ function Navbar() {
 
   return (
     <div
-      className={`max-w-screen-2xl  w-screen container mx-auto md:px-5 px-4 fixed  top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
+      className={` w-screen container mx-auto md:px-5 px-4 fixed top-0 left-0 right-0 duration-400 transition-all ease-in-out z-50
     ${
       sticky
-        ? "sticky-navbar shadow-amber-400  bg-[#211951] border-amber-100   duration-400 transition-all ease-in-out"
-        : ""
+        ? "sticky-navbar shadow-[0_0_25px_rgba(255,193,7,0.8)] bg-[#331539]/20 border border-amber-200 backdrop-blur-md transition-all duration-500"
+        : "bg-black"
     }`}
-    >
+>
       <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -104,12 +104,25 @@ function Navbar() {
             >
               {navItems}
             </ul>
+
+            {/* logo */}
           </div>
-          <a className=" text-2xl font-bold cursor-pointer " href="/">
-            <span className="text-gray-400">Car</span>
-            <span className="text-yellow-400 mb-4">Hub</span>
+          <a
+            href="/"
+            className="text-2xl font-extrabold cursor-pointer tracking-wide relative group"
+          >
+            <span className="text-gray-300 group-hover:text-white transition duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+              Car
+            </span>
+            <span className="text-yellow-400 group-hover:text-yellow-300 ml-1 transition duration-300 drop-shadow-[0_0_10px_rgba(255,230,0,0.8)]">
+              Hub
+            </span>
+            {/* bottom underline animation */}
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-gray-400 to-yellow-400 group-hover:w-full transition-all duration-500 rounded-full"></span>
           </a>
         </div>
+        {/* logo */}
+
         <div className="navbar-end space-x-4">
           <div className="navbar-center hidden lg:flex">
             <ul

@@ -5,7 +5,7 @@ function Cards({ item }) {
   // console.log(item);
   return (
     <>
-      <div className="pb-3 hover:scale-105 duration-300">
+      <div className="pb-3 hover:scale-105 duration-300 ">
         <div className="card bg-gray-800 h-96 w-85 shadow-sm shadow-gray-700 hover:shadow-lime-50 ">
           <figure>
             <img

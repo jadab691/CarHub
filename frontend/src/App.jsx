@@ -11,7 +11,7 @@ import Buy from "./components/Buy";
 import Sale from "./components/Sale";
 function App() {
   return (
-    <div className=" ">
+    <div >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<Cars />} />

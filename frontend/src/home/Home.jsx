@@ -68,7 +68,7 @@ function Home() {
 
       {!loading && (
         <>
-          <div className=" max-h-fit w-full">
+          <div>
             <Navbar />
             <Banner />
             <Display />
