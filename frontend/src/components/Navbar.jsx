@@ -44,21 +44,25 @@ function Navbar() {
     (
       <>
         <li>
-          <a href="/">Home</a>
+          <a href="/" className="text-yellow-500">
+            Home
+          </a>
         </li>
         <li>
-          <a href="/Cars">Cars</a>
+          <a href="/Cars" className="text-green-500">
+            Cars
+          </a>
         </li>
         <li>
-          <a>Contact</a>
+          <a href="/Contact" className="text-blue-600">Contact</a>
         </li>
         <li>
-          <a href="/About">About</a>
+          <a href="/About" className="text-gray-500">About</a>
         </li>
         {/*buy or sell jofi login thake ?*/}
         <li>
           {login_ache ? (
-            <a href="/BuySale">
+            <a href="/BuySale" className="text-fuchsia-400">
               <div>Buy</div>
               <div>Sale</div>
             </a>
@@ -75,9 +79,9 @@ function Navbar() {
     ${
       sticky
         ? "sticky-navbar shadow-[0_0_25px_rgba(255,193,7,0.8)] bg-[#331539]/20 border border-amber-200 backdrop-blur-md transition-all duration-500"
-        : "bg-black"
+        : "bg-blue-950/20 backdrop-blur-md"
     }`}
->
+    >
       <div className="navbar ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -137,27 +141,11 @@ function Navbar() {
           {/* search button */}
           <Search />
 
-          {/* dark theme controller */}
-          <div>
-            <label
-              className={`swap swap-rotate ${sticky ? "text-[#FF7ED4]" : ""}`}
-            >
-              {/* this hidden checkbox controls the state */}
-              <input
-                type="checkbox"
-                className="theme-controller"
-                value="synthwave"
-              />
-
-              {/* sun icon */}
-            </label>
-          </div>
-
           {/* Login button */}
           <div>
             {login_ache ? (
               <button
-                className="btn px-4 py-2 rounded-md bg-yellow-800 border-black text-white
+                className="btn px-4 py-2 rounded-md bg-yellow-800 border-black text-shadow-cyan-500
                  hover:bg-blue-800 shadow-md transition duration-200 "
                 onClick={handleProfile}
               >

@@ -13,7 +13,7 @@ function BuySale() {
       className="min-h-screen flex flex-col items-center justify-center 
         text-gray-400 "
     >
-      <h1 className="text-4xl md:text-5xl font-bold mb-10 text-center drop-shadow-lg">
+      <h1 className="text-4xl md:text-5xl text-cyan-400 font-bold mb-10 text-center drop-shadow-lg">
         What do you want to do?
       </h1>
 

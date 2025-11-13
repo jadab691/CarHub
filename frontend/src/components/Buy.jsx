@@ -22,8 +22,8 @@ function Cars() {
     <>
       <Navbar />
 
-      <div className="max-w-screen-2xl mx-auto mt-30 px-4 md:px-20 ">
-        <h1 className="text-3xl md:text-4xl font-bold text-yellow-200 text-center mb-10">
+      <div className="max-w-screen-2xl mx-auto mt-20 pt-10  px-4 md:px-20 ">
+        <h1 className="text-3xl md:text-4xl font-bold pb-14 text-yellow-200 text-center mb-10">
           Available Cars
         </h1>
 

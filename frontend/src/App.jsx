@@ -9,6 +9,7 @@ import Profile from "./components/Profile";
 import BuySale from "./components/BuySale";
 import Buy from "./components/Buy";
 import Sale from "./components/Sale";
+import Contact from "./components/Contact";
 function App() {
   return (
     <div >
@@ -23,6 +24,7 @@ function App() {
         <Route path="/buysale" element={<BuySale />}></Route>
         <Route path="/buy" element={<Buy />} />
         <Route path="/sale" element={<Sale />} />
+        <Route path = "/contact" element={<Contact/>} />
         
       </Routes>
     </div>

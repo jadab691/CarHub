@@ -56,7 +56,7 @@ function Sale() {
   return (
     <>
       <Navbar />
-      <div className="max-w-screen-md mx-auto mt-30 mb-20 p-6 border rounded shadow-lg ">
+      <div className="max-w-screen-md mx-auto mt-22 bg-emerald-950 pt-10 mb-20 p-6 border rounded shadow-lg ">
         <h2 className="text-2xl font-bold mb-6">Post Your Car for Sale</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
