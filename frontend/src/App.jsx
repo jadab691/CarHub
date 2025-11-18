@@ -10,9 +10,11 @@ import BuySale from "./components/BuySale";
 import Buy from "./components/Buy";
 import Sale from "./components/Sale";
 import Contact from "./components/Contact";
+import AdminProfile from "./components/AdminProfile";
+
 function App() {
   return (
-    <div >
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<Cars />} />
@@ -24,8 +26,8 @@ function App() {
         <Route path="/buysale" element={<BuySale />}></Route>
         <Route path="/buy" element={<Buy />} />
         <Route path="/sale" element={<Sale />} />
-        <Route path = "/contact" element={<Contact/>} />
-        
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<AdminProfile />} />
       </Routes>
     </div>
   );

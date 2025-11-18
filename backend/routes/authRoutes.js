@@ -55,15 +55,20 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Wrong Password" });
     }
 
-    const token = jwt.sign({ id: rows[0].id }, process.env.JWT_KEY, {
-      expiresIn: "3h",
-    });
+    // ✅ Include role in token
+    const token = jwt.sign(
+      { id: rows[0].id, role: rows[0].role }, // role include
+      process.env.JWT_KEY,
+      { expiresIn: "3h" }
+    );
 
     // Send token AND username in response
     res.status(201).json({
       message: "Login successful",
       token: token,
-      name: rows[0].username, // ✅ important for localStorage
+      id: rows[0].id, // ✅ Add this
+      name: rows[0].username,
+      role: rows[0].role,
     });
   } catch (err) {
     res

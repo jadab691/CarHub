@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AdminProfile from "./AdminProfile";
+import { Navigate } from "react-router-dom";
 
 function Profile() {
   const navigate = useNavigate();
@@ -98,6 +100,14 @@ function Profile() {
           >
             Back to Home
           </button>
+          {user.email === "admin@carhub.com" && (
+            <button
+              className="w-full mt-5 hover:bg-blue-700 text-red-400 py-2 rounded-md transition"
+              onClick={() => navigate("/admin")} // use a function
+            >
+              Go To Admin Panel
+            </button>
+          )}
         </div>
 
         {/* User’s Posted Cars */}

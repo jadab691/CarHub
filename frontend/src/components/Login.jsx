@@ -28,13 +28,20 @@ function Login() {
       );
 
       if (response.status === 201) {
-        // ✅ fixed typo here
-        localStorage.setItem("token", response.data.token); // store token
-        localStorage.setItem("name", response.data.name); //store name in the local_storage
-        navigate("/"); // ✅ navigate to home
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("id", response.data.id); // ✅ Store id
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("role", response.data.role);
+
+        if (response.data.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/"); // normal user
+        }
       }
     } catch (error) {
       console.error("Login failed:", error);
+      alert("Wrong Email or Password");
     }
   };
 
@@ -44,7 +51,6 @@ function Login() {
       <div className="flex justify-center items-center h-screen">
         <div className="w-1/3 px-8 py-6 border rounded-lg shadow-lg">
           {" "}
-          {/* ✅ fixed py-6 */}
           <h2 className="text-2xl font-bold mb-6 text-red-500 text-center">
             Login
           </h2>
