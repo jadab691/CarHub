@@ -29,14 +29,14 @@ function Login() {
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("id", response.data.id); // ✅ Store id
+        localStorage.setItem("id", response.data.id); //  Store id
         localStorage.setItem("name", response.data.name);
         localStorage.setItem("role", response.data.role);
 
         if (response.data.role === "admin") {
-          navigate("/admin");
+          navigate("/");
         } else {
-          navigate("/"); // normal user
+          navigate("/");
         }
       }
     } catch (error) {

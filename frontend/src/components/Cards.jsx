@@ -24,9 +24,9 @@ function Cards({ item }) {
               <div className="badge badge-outline cursor-pointer hover:bg-blue-400 hover:scale-110 transition-all duration-75 ease-in">
                 See More
               </div>
-              <div className="badge badge-outline cursor-pointer hover:bg-red-400 hover:scale-110 transition-all duration-75 ease-in">
+              {/* <div className="badge badge-outline cursor-pointer hover:bg-red-400 hover:scale-110 transition-all duration-75 ease-in">
                 Add To Fav
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

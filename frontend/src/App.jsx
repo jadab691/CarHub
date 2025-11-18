@@ -11,6 +11,7 @@ import Buy from "./components/Buy";
 import Sale from "./components/Sale";
 import Contact from "./components/Contact";
 import AdminProfile from "./components/AdminProfile";
+import AdminCars from "./components/AdminCars";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/sale" element={<Sale />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminProfile />} />
+        <Route path="/admincars" element={<AdminCars />} />
       </Routes>
     </div>
   );
