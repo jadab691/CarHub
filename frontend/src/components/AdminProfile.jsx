@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -22,17 +22,31 @@ const AdminProfile = () => {
     }
   };
 
+  // Fetch users when component mounts
+  React.useEffect(() => {
+    fetchUsers();
+  }, []);
+
   // ================= Delete user =================
   const deleteUser = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
+
     try {
-      await axios.delete(`http://localhost:3000/admin/delete-user/${id}`, {
+      const res = await axios.delete(`http://localhost:3000/admin/delete-user/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      alert("User deleted successfully");
-      setUsers(users.filter((user) => user.id !== id)); // update UI
+
+      alert(res.data.message); // show backend message
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id)); // update UI
     } catch (err) {
       console.error(err);
-      alert("Cannot delete user");
+
+      // Show backend message if exists
+      if (err.response && err.response.data && err.response.data.message) {
+        alert(err.response.data.message);
+      } else {
+        alert("Cannot delete user");
+      }
     }
   };
 
@@ -49,7 +63,6 @@ const AdminProfile = () => {
           Show All Users
         </button>
 
-        
         <button
           onClick={() => navigate("/admincars")} 
           className="bg-green-600 text-white px-4 py-2 rounded ml-2"
@@ -76,7 +89,7 @@ const AdminProfile = () => {
                   <td className="border px-4 py-2">
                     <button
                       onClick={() => deleteUser(user.id)}
-                      className=" text-pink-500 px-3 py-1 rounded"
+                      className="text-pink-500 px-3 py-1 rounded"
                     >
                       Delete
                     </button>
