@@ -1,9 +1,5 @@
-import { set } from "lodash";
 import React, { use, useEffect } from "react";
 import { useState } from "react";
-import Login from "./Login";
-import Search from "./Search";
-import About from "./About";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
@@ -52,12 +48,6 @@ function Navbar() {
           <a href="/Cars" className="text-green-500">
             Cars
           </a>
-        </li>
-        <li>
-          <a href="/Contact" className="text-blue-600">Contact</a>
-        </li>
-        <li>
-          <a href="/About" className="text-gray-500">About</a>
         </li>
         {/*buy or sell jofi login thake ?*/}
         <li>
@@ -138,11 +128,8 @@ function Navbar() {
             </ul>
           </div>
 
-          {/* search button */}
-          <Search />
-
           {/* Login button */}
-          <div>
+          <div className="pl-100">
             {login_ache ? (
               <button
                 className="btn px-4 py-2 rounded-md bg-yellow-800 border-black text-shadow-cyan-500

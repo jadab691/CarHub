@@ -24,7 +24,7 @@ function About() {
 
         <div className="w-full md:w-1/2 order-2 md:order-0 mt-12 mb-25 md:mt-25">
           <div className="text-4xl text-indigo-400  ">
-            <h1>PM Mahmud</h1>
+            <h1>Pm Mahmud</h1>
           </div>
           <img
             src={pavel}
@@ -32,7 +32,7 @@ function About() {
             alt=""
           />
           <p>
-            This man is heart broken lover
+            we dont share personal details(Vibe coder)
           </p>
         </div>
       </div>

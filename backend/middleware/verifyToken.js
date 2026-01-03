@@ -7,7 +7,7 @@ export const verifyToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_KEY);
     req.userId = decoded.id;
-    req.userRole = decoded.role; // role include করুন token এa
+    req.userRole = decoded.role; // role include kora hoitase  token e
     next();
   } catch (err) {
     res.status(401).json({ message: "Invalid token" });

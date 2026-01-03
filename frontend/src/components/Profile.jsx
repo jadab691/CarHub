@@ -100,14 +100,6 @@ function Profile() {
           >
             Back to Home
           </button>
-          {user.email === "admin@carhub.com" && (
-            <button
-              className="w-full mt-5 hover:bg-blue-700 text-red-400 py-2 rounded-md transition"
-              onClick={() => navigate("/admin")} // use a function
-            >
-              Go To Admin Panel
-            </button>
-          )}
         </div>
 
         {/* User’s Posted Cars */}

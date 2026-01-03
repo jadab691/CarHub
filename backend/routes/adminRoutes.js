@@ -22,7 +22,7 @@ router.delete("/delete-user/:id", verifyToken, verifyAdmin, async (req, res) => 
     const userId = req.params.id;
     const db = await connectTODatabase();
 
-    // 1️⃣ Fetch the user first
+    // 1 Fetch the user first
     const [rows] = await db.query("SELECT * FROM users WHERE id = ?", [userId]);
     if (rows.length === 0) {
       return res.status(404).json({ message: "User not found" });
@@ -30,16 +30,16 @@ router.delete("/delete-user/:id", verifyToken, verifyAdmin, async (req, res) => 
 
     const user = rows[0];
 
-    // 2️⃣ Prevent deleting admin
+    // 2 Prevent deleting admin
     if (user.role === "admin") {
       return res.status(403).json({ message: "Cannot delete an admin user" });
     }
 
-    // 3️⃣ Delete dependent rows
+    // 3 Delete dependent rows
     await db.query("DELETE FROM buys WHERE user_id = ?", [userId]);
     await db.query("DELETE FROM cars WHERE user_id = ?", [userId]);
 
-    // 4️⃣ Delete the user
+    // 4 Delete the user
     await db.query("DELETE FROM users WHERE id = ?", [userId]);
 
     res.status(200).json({ message: "User and all related data deleted successfully" });

@@ -1,5 +1,5 @@
 import Home from "./home/Home";
-import Cars from "./cars/Cars";
+import Cars from "./components/Cars";
 import { Routes, Route } from "react-router-dom";
 import Signup from "./components/Register";
 import CarsProfile from "./components/CarsProfile";
@@ -12,6 +12,8 @@ import Sale from "./components/Sale";
 import Contact from "./components/Contact";
 import AdminProfile from "./components/AdminProfile";
 import AdminCars from "./components/AdminCars";
+import AdminLogin from "./components/AdminLogin";
+import AdminID from "./components/AdminID";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminProfile />} />
         <Route path="/admincars" element={<AdminCars />} />
+        <Route path="adminlogin" element={<AdminLogin />} />
+        <Route path="adminid" element={<AdminID />} />
       </Routes>
     </div>
   );

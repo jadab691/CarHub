@@ -34,9 +34,7 @@ function Login() {
         localStorage.setItem("role", response.data.role);
 
         if (response.data.role === "admin") {
-          navigate("/");
-        } else {
-          navigate("/");
+          navigate("/admin");
         }
       }
     } catch (error) {
@@ -50,14 +48,14 @@ function Login() {
       <div className="flex justify-center items-center h-screen">
         <div className="w-1/3 px-8 py-6 border rounded-lg shadow-lg">
           {" "}
-          <h2 className="text-2xl font-bold mb-6 text-red-500 text-center">
-            Login
+          <h2 className="text-2xl font-bold mb-6 text-red-100 text-center">
+            Admin Login
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Admin Email"
                 className="w-full px-3 py-2 border rounded"
                 name="email"
                 onChange={handleChanges}
@@ -68,7 +66,7 @@ function Login() {
             <div className="mb-4">
               <input
                 type="password"
-                placeholder="Enter Password"
+                placeholder="Admin Password"
                 className="w-full px-3 py-2 border rounded"
                 name="password"
                 onChange={handleChanges}
@@ -80,18 +78,9 @@ function Login() {
               type="submit"
               className="w-full bg-pink-700 text-white py-2 rounded hover:bg-pink-800"
             >
-              Login
+              Enter Admin Dashboard
             </button>
           </form>
-          <div className="mt-4 text-center">
-            <span>Don't have an account? </span>
-            <Link to="/register" className="text-blue-500 hover:underline">
-              Signup
-            </Link>
-          </div>
-          <div className="mt-6  text-4xl text-blue-200">
-            <Link to="/adminlogin">Login as an Admin</Link>
-          </div>
         </div>
       </div>
       <Footer />

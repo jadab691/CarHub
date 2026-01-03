@@ -27,7 +27,7 @@ function Banner() {
             Hello , Welcome to the <span className="text-gray-400">Car</span>
             <span className="text-yellow-400 mb-4">Hub</span> <br />
             <span className="text-[#FF7ED4] text-2xl font-light">
-              here you can find the best cars available in the market.
+              Here you can find the best cars available in the market.
             </span>{" "}
             <br />
             <span className="text-red-300 font-normal">Sell </span>or{" "}

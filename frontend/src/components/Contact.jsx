@@ -28,9 +28,9 @@ function Contact() {
               <p>Phone: +880 1234 567890</p>
             </div>
             <div className="text-gray-300 neon-text">
-              <p className="font-semibold">Another Dev</p>
-              <p>Email: dev2@example.com</p>
-              <p>Phone: +880 9876 543210</p>
+              <p className="font-semibold">Pavel Mahmud Raj</p>
+              <p>Email: pavelmahmud711@gmail.com</p>
+              <p>Phone: +880 1719 141225</p>
             </div>
           </div>
         </div>

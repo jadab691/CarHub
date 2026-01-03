@@ -1,13 +1,27 @@
 import React from "react";
+import About from "./About";
+import Contact from "./Contact";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="pt-10  ">
-        <hr />
+      <hr />
       <footer className="footer footer-horizontal footer-center  text-base-content rounded p-10">
         <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover text-fuchsia-600">About us</a>
-          <a className="link link-hover text-lime-500">Contact</a>
+          <a
+            className="link link-hover text-fuchsia-600"
+            onClick={() => navigate("/about")}
+          >
+            About us
+          </a>
+          <a
+            className="link link-hover text-lime-500"
+            onClick={() => navigate("/contact")}
+          >
+            Contact
+          </a>
           <a className="link link-hover text-zinc-400">Jobs</a>
           <a className="link link-hover text-amber-500">Press kit</a>
         </nav>
@@ -50,7 +64,8 @@ function Footer() {
         </nav>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by <span className="text-red-500"> Lal </span>
+            Copyright © {new Date().getFullYear()} - All right reserved by{" "}
+            <span className="text-red-500"> Lal & Pm </span>
             Industries Ltd
           </p>
         </aside>

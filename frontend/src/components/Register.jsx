@@ -34,11 +34,14 @@ function Register() {
       console.log(error);
     }
   };
+
   //   console.log(values);
+
+  
 
   return (
     <>
-      <Navbar />
+
       <div className="flex justify-center items-center h-screen">
         <div className="w-1/3 px-8 py - 6 border rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>

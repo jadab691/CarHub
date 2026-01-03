@@ -52,7 +52,6 @@ const AdminProfile = () => {
 
   return (
     <>
-      <Navbar/>
       <div className="p-6 pt-20">
         <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
 
@@ -68,6 +67,13 @@ const AdminProfile = () => {
           className="bg-green-600 text-white px-4 py-2 rounded ml-2"
         >
           Delete Posted Cars By Users
+        </button>
+
+        <button
+          onClick={() => navigate("/adminid")} 
+          className="text-cyan-300  ml-100"
+        >
+          Admin's Profile
         </button>
 
         {users.length > 0 && (
