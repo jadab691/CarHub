@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const AdminProfile = () => {
   const [users, setUsers] = useState([]);
-  const token = localStorage.getItem("token"); 
-  const navigate = useNavigate(); 
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   // ================= Show all users =================
   const fetchUsers = async () => {
@@ -32,9 +32,12 @@ const AdminProfile = () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      const res = await axios.delete(`http://localhost:3000/admin/delete-user/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.delete(
+        `http://localhost:3000/admin/delete-user/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       alert(res.data.message); // show backend message
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id)); // update UI
@@ -50,6 +53,12 @@ const AdminProfile = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="p-6 pt-20">
@@ -63,18 +72,14 @@ const AdminProfile = () => {
         </button>
 
         <button
-          onClick={() => navigate("/admincars")} 
+          onClick={() => navigate("/admincars")}
           className="bg-green-600 text-white px-4 py-2 rounded ml-2"
         >
           Delete Posted Cars By Users
         </button>
 
-        <button
-          onClick={() => navigate("/adminid")} 
-          className="text-cyan-300  ml-100"
-        >
-          Admin's Profile
-        </button>
+        <button className="ml-150" onClick={handleLogout}>Admin Logout </button>
+
 
         {users.length > 0 && (
           <table className="w-full border border-gray-300 mt-4">
@@ -90,8 +95,12 @@ const AdminProfile = () => {
               {users.map((user) => (
                 <tr key={user.id}>
                   <td className="border px-4 py-2">{user.id}</td>
-                  <td className="border text-yellow-400 px-4 py-2">{user.username}</td>
-                  <td className="border text-teal-400 px-4 py-2">{user.email}</td>
+                  <td className="border text-yellow-400 px-4 py-2">
+                    {user.username}
+                  </td>
+                  <td className="border text-teal-400 px-4 py-2">
+                    {user.email}
+                  </td>
                   <td className="border px-4 py-2">
                     <button
                       onClick={() => deleteUser(user.id)}
@@ -106,7 +115,7 @@ const AdminProfile = () => {
           </table>
         )}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

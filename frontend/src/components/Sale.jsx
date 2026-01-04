@@ -94,7 +94,9 @@ function Sale() {
             required
             className="border p-2 rounded"
           />
-          <input className="text-yellow-400 border-2"
+          <h1>Enter The Car Image : </h1>
+          <input
+            className="text-yellow-400 border-2"
             type="file"
             name="image"
             accept="image/*"

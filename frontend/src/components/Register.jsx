@@ -37,11 +37,8 @@ function Register() {
 
   //   console.log(values);
 
-  
-
   return (
     <>
-
       <div className="flex justify-center items-center h-screen">
         <div className="w-1/3 px-8 py - 6 border rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
@@ -67,15 +64,20 @@ function Register() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-700"></label>
               <input
                 type="password"
-                placeholder="Enter Password"
-                className="w-full px-3 py-6 border"
+                id="password"
                 name="password"
+                placeholder="Enter Password"
+                className="w-full px-3 py-3 border rounded-md"
+                required
+                minLength={8}
+                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+                title="Password must be at least 8 characters long and include uppercase, lowercase, and a number."
                 onChange={handleChanges}
               />
             </div>
+
             <button
               className="w-full bg-green-600 text-white py-2 cursor-pointer"
               // onClick={gotoLogin}

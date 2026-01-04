@@ -13,7 +13,6 @@ import Contact from "./components/Contact";
 import AdminProfile from "./components/AdminProfile";
 import AdminCars from "./components/AdminCars";
 import AdminLogin from "./components/AdminLogin";
-import AdminID from "./components/AdminID";
 
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
         <Route path="/admin" element={<AdminProfile />} />
         <Route path="/admincars" element={<AdminCars />} />
         <Route path="adminlogin" element={<AdminLogin />} />
-        <Route path="adminid" element={<AdminID />} />
       </Routes>
     </div>
   );

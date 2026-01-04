@@ -57,7 +57,6 @@ const AdminCars = () => {
 
   return (
     <>
-      <Navbar />
       <div className="p-6 pt-20">
         <h1 className="text-2xl font-bold mb-4">Admin Car Panel</h1>
 

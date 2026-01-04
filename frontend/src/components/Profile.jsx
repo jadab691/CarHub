@@ -62,44 +62,29 @@ function Profile() {
     <>
       <Navbar />
 
-      <div className="min-h-screen mt-20 bg-gray-900 flex flex-col items-center p-4">
-        {/* Profile Card */}
-        <div className="bg-gray-800 rounded-xl p-8 max-w-md w-full shadow-lg mb-10">
-          <h2 className="text-2xl font-bold mb-6 text-center text-yellow-400">
-            Profile
-          </h2>
+      <div className="relative">
+        <div className="absolute top-4 left-31 mb-4 flex items-center gap-4">
+          <p className="text-white text-sm">{user.email}</p>
+        </div>
+      </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-300 font-semibold mb-1">
-              Name
-            </label>
-            <p className="p-3 rounded-md bg-gray-700 text-white">
-              {user.username}
-            </p>
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-gray-300 font-semibold mb-1">
-              Email
-            </label>
-            <p className="p-3 rounded-md bg-gray-700 text-white">
-              {user.email}
-            </p>
-          </div>
-
+      <div className="relative">
+        <div className="absolute top-4 right-4 mb-4 flex items-center gap-4">
           <button
-            className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md mb-3 transition"
+            className="bg-red-600 hover:bg-red-700 text-red-500 px-4 py-1 rounded-md transition"
             onClick={handleLogout}
           >
             Logout
           </button>
+        </div>
+      </div>
 
-          <button
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
-            onClick={handleHome}
-          >
-            Back to Home
-          </button>
+      <div className="min-h-screen mt-20 bg-gray-900 flex flex-col items-center p-4">
+        {/* Profile Card */}
+        <div className="relative">
+          <h2 className="text-2xl font-bold mb-6 text-center text-yellow-400">
+            Profile
+          </h2>
         </div>
 
         {/* User’s Posted Cars */}
