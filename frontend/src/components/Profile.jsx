@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AdminProfile from "./AdminProfile";
-import { Navigate } from "react-router-dom";
+import { apiUrl, imageUrl } from "../api";
 
 function Profile() {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ function Profile() {
 
     // Fetch user info
     axios
-      .get("http://localhost:3000/auth/home", {
+      .get(apiUrl("/auth/home"), {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -32,13 +31,13 @@ function Profile() {
 
         // Fetch user's posted cars
         axios
-          .get(`http://localhost:3000/cars/user/${userId}`)
+          .get(apiUrl(`/cars/user/${userId}`))
           .then((res) => setUserCars(res.data))
           .catch((err) => console.error(err));
 
         // Fetch user's bought cars
         axios
-          .get(`http://localhost:3000/cars/buys/user/${userId}`, {
+          .get(apiUrl(`/cars/buys/user/${userId}`), {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then((res) => setBoughtCars(res.data))
@@ -102,7 +101,7 @@ function Profile() {
                   className="bg-[#081f28] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   <img
-                    src={`http://localhost:3000/uploads/${car.image}`}
+                    src={imageUrl(car.image)}
                     alt={car.name}
                     className="h-48 w-full object-cover"
                   />
@@ -124,25 +123,22 @@ function Profile() {
                       onClick={async () => {
                         if (
                           window.confirm(
-                            "Are you sure you want to delete this car?"
+                            "Are you sure you want to delete this car?",
                           )
                         ) {
                           try {
                             const token = localStorage.getItem("token");
-                            await axios.delete(
-                              `http://localhost:3000/cars/${car.id}`,
-                              {
-                                headers: { Authorization: `Bearer ${token}` },
-                              }
-                            );
+                            await axios.delete(apiUrl(`/cars/${car.id}`), {
+                              headers: { Authorization: `Bearer ${token}` },
+                            });
                             setUserCars(
-                              userCars.filter((c) => c.id !== car.id)
+                              userCars.filter((c) => c.id !== car.id),
                             );
                           } catch (err) {
                             console.error("Failed to delete car:", err);
                             alert(
                               err.response?.data?.message ||
-                                "Failed to delete car"
+                                "Failed to delete car",
                             );
                           }
                         }
@@ -172,7 +168,7 @@ function Profile() {
                   className="bg-[#081f28] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   <img
-                    src={`http://localhost:3000/uploads/${car.image}`}
+                    src={imageUrl(car.image)}
                     alt={car.name}
                     className="h-48 w-full object-cover"
                   />

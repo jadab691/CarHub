@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { apiUrl } from "../api";
 
 function Sale() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ function Sale() {
       data.append("image", formData.image);
 
       const token = localStorage.getItem("token"); // JWT from login
-      const res = await axios.post("http://localhost:3000/cars/add", data, {
+      const res = await axios.post(apiUrl("/cars/add"), data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

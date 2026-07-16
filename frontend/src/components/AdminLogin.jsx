@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { apiUrl } from "../api";
 
 function Login() {
   const [values, setValues] = useState({
@@ -22,10 +22,7 @@ function Login() {
 
     try {
       // send data to server
-      const response = await axios.post(
-        "http://localhost:3000/auth/login",
-        values
-      );
+      const response = await axios.post(apiUrl("/auth/login"), values);
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);

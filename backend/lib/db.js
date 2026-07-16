@@ -6,10 +6,14 @@ export const connectTODatabase = async () => {
   if (!connection) {
     connection = await mysql.createConnection({
       host: process.env.DB_HOST,
+      port: process.env.DB_PORT,   // <-- Add this line
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
     });
+
+    console.log("✅ Connected to Railway MySQL");
   }
+
   return connection;
 };

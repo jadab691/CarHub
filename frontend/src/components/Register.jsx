@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { apiUrl } from "../api";
 
 function Register() {
   const navigate = useNavigate(); //for navigation after registration
@@ -23,10 +23,7 @@ function Register() {
     e.preventDefault();
     try {
       //send data to server
-      const response = await axios.post(
-        "http://localhost:3000/auth/register",
-        values
-      );
+      const response = await axios.post(apiUrl("/auth/register"), values);
       if (response.status === 201) {
         navigate("/login");
       }

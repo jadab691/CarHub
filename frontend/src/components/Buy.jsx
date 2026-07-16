@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { apiUrl, imageUrl } from "../api";
 
 function Cars() {
   const [cars, setCars] = useState([]);
@@ -9,7 +10,7 @@ function Cars() {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/cars");
+        const res = await axios.get(apiUrl("/cars"));
         setCars(res.data);
       } catch (err) {
         console.error("Failed to fetch cars:", err);
@@ -34,7 +35,7 @@ function Cars() {
               className="bg-[#092635] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               <img
-                src={`http://localhost:3000/uploads/${car.image}`}
+                src={imageUrl(car.image)}
                 alt={car.name}
                 className="h-48 w-full object-cover"
               />
@@ -57,17 +58,17 @@ function Cars() {
                   onClick={async () => {
                     if (
                       window.confirm(
-                        `Do you want to buy ${car.name} for $${car.price}?`
+                        `Do you want to buy ${car.name} for $${car.price}?`,
                       )
                     ) {
                       try {
                         const token = localStorage.getItem("token");
                         await axios.post(
-                          `http://localhost:3000/cars/buy/${car.id}`,
+                          apiUrl(`/cars/buy/${car.id}`),
                           {},
                           {
                             headers: { Authorization: `Bearer ${token}` },
-                          }
+                          },
                         );
 
                         alert("Car bought successfully!");
@@ -75,7 +76,7 @@ function Cars() {
                       } catch (err) {
                         console.error("Failed to buy car:", err);
                         alert(
-                          err.response?.data?.message || "Failed to buy car"
+                          err.response?.data?.message || "Failed to buy car",
                         );
                       }
                     }
