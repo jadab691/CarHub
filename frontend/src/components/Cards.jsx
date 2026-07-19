@@ -1,28 +1,29 @@
-
 function Cards({ item }) {
   return (
-    <>
-      <div className="pb-2 hover:scale-105 duration-300 ">
-        <div className="card bg-gray-800 h-90 w-78 shadow-sm shadow-gray-700 hover:shadow-lime-50 ">
-          <figure>
-            <img
-              className="h-48 w-full hover:scale-110 transition-all duration-300 ease-in-out"
-              src={item.image}
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body bg-[#092635]">
-            <h2 className="card-title hover:text-[#FF7ED4] cursor-pointer hover:scale-97 transition-all duration-300 ease-out ">
+    <div className="px-2 pb-3">
+      <div className="card h-96 w-full overflow-hidden">
+        <figure className="overflow-hidden">
+          <img
+            className="h-48 w-full object-cover transition-all duration-300 ease-in-out hover:scale-105"
+            src={item.image}
+            alt={item.title}
+          />
+        </figure>
+        <div className="card-body bg-white p-5">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="card-title text-lg font-semibold text-slate-900">
               {item.title}
-              <div className="badge badge-secondary">NEW</div>
             </h2>
-            <p>{item.discription}</p>
-            <div className="card-actions justify-end ">
-            </div>
+            <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-600">
+              New
+            </span>
           </div>
+          <p className="text-sm text-slate-600 line-clamp-3">
+            {item.discription}
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

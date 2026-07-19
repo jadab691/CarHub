@@ -1,17 +1,15 @@
 import React, { useRef } from "react";
-import Car1RemoveBG from "../../public/car1-removedBG.png";
-import Car1 from "../../public/car1.jpg";
 import carhub from "../../public/carhub.jpg";
 
 function Banner() {
   const imgRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    // Increased range: from ±20 → ±40 for looser movement
-    const x = ((e.clientX - left) / width - 0.5) * 40;
-    const y = ((e.clientY - top) / height - 0.5) * 40;
-    imgRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.05)`; // added a slight zoom
+    const { left, top, width, height } =
+      e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width - 0.5) * 30;
+    const y = ((e.clientY - top) / height - 0.5) * 30;
+    imgRef.current.style.transform = `translate(${x}px, ${y}px) scale(1.03)`;
   };
 
   const resetPosition = () => {
@@ -20,49 +18,50 @@ function Banner() {
 
   return (
     <>
-      <div className="max-w-screen-2xl pt-10 container mx-auto md:px-20 px-4 flex flex-col md:flex-row md:mt-5 md:mb-20">
-        {/* Left side text */}
-        <div className="w-full md:w-1/2 order-2 md:order-0 mt-12 mb-25 md:mt-25">
-          <h1 className="text-4xl font-bold mb-5">
-            Hello , Welcome to the <span className="text-gray-400">Car</span>
-            <span className="text-yellow-400 mb-4">Hub</span> <br />
-            <span className="text-[#FF7ED4] text-2xl font-light">
-              Here you can find the best cars available in the market.
-            </span>{" "}
-            <br />
-            <span className="text-red-300 font-normal">Sell </span>or{" "}
-            <span className="text-green-400 font-normal">Buy </span>
-            <span className="text-blue-500 font-normal">it</span>
+      <div className="max-w-screen-2xl pt-24 pb-12 container mx-auto md:px-20 px-4 flex flex-col md:flex-row md:items-center md:mt-6 md:mb-16 gap-10">
+        <div className="w-full md:w-1/2 order-2 md:order-0">
+          <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-600 shadow-sm mb-6">
+            Trusted marketplace for modern car buyers and sellers
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900 mb-5">
+            Find the right car with confidence.
           </h1>
-
-          <p className="text-sm text-gray-400 mb-12">
-            "Welcome to CarHub, where your journey begins the moment you step
-            into the driver’s seat. Explore a wide collection of cars crafted
-            for every lifestyle—whether you seek luxury, performance, or the
-            perfect daily ride. Each car tells a story of adventure, freedom,
-            and excitement, waiting for you to take the wheel. Find your dream
-            car, experience the thrill of driving, and let every mile be a
-            memory. At CarHub, it’s more than just cars—it’s the start of your
-            next great journey."
+          <p className="text-lg text-slate-600 mb-8 max-w-xl">
+            Discover a refined selection of vehicles, browse verified listings,
+            and connect with a smoother buying or selling experience.
           </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/cars"
+              className="rounded-full bg-blue-600 px-5 py-3 text-white shadow-sm hover:bg-blue-700"
+            >
+              Explore Cars
+            </a>
+            <a
+              href="/buysale"
+              className="rounded-full border border-slate-200 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
+            >
+              Start Selling
+            </a>
+          </div>
         </div>
 
-        {/* Right side image (looser floating effect) */}
         <div
-          className="w-full md:w-1/2 ml-10 rounded-2xl mt-2.5 flex justify-center flex-col items-center"
+          className="w-full md:w-1/2 flex justify-center"
           onMouseMove={handleMouseMove}
           onMouseLeave={resetPosition}
         >
-          <img
-            ref={imgRef}
-            src={carhub}
-            alt="CarHub"
-            className="order-1 bg-transparent rounded-tl-full rounded-br-full transition-transform duration-500 ease-out"
-          />
-          <br />
+          <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-3 shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+            <img
+              ref={imgRef}
+              src={carhub}
+              alt="CarHub"
+              className="rounded-[1.5rem] object-cover transition-transform duration-500 ease-out"
+            />
+          </div>
         </div>
       </div>
-      <hr />
+      <div className="border-t border-slate-200" />
     </>
   );
 }

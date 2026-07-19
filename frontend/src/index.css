@@ -1,18 +1,20 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @custom-variant dark (&:where(.dark, .dark *));
-/* @custom-variant light (&:where(.light, .light *)); */
 
-/* Light Cyber Neon Theme Base */
 body {
-  background-color: #000; /* soft black / dark gray */
   margin: 0;
   padding: 0;
-  transition: background 0.2s;
+  background: #fff8e1;
+  color: #0f172a;
+  font-family: Inter, "Segoe UI", Roboto, sans-serif;
+  transition: background 0.2s ease;
 }
 
-/* Subtle Neon Glow Text (no color) */
-.neon-text,
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -20,87 +22,102 @@ p,
 a,
 label,
 span {
-  text-shadow: 0 0 1px #ac264aff, /* soft pink */ 0 0 3px #0a3636ff; /* soft cyan */
+  text-shadow: none;
 }
 
-/* Gentle Glow Animation for Titles */
-@keyframes softPulse {
-  0%,
-  100% {
-    text-shadow: 0 0 1px #e57be5ff, 0 0 3px #1bc3c3ff;
-  }
-  50% {
-    text-shadow: 0 0 2px #f18a56ff, 0 0 6px #f3f307ff;
-  }
-}
-
-h1,
-h2 {
-  animation: softPulse 2s infinite alternate;
-}
-
-/* Buttons */
 button,
 .btn {
-  background: rgba(255, 128, 255, 0.05); /* faint pink */
-  border: 1px solid #ff66cc;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  background: #fffdf7;
+  border: 1px solid #e9d8a6;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
   cursor: pointer;
-  text-shadow: 0 0 2px #ff80ff;
-  box-shadow: 0 0 4px #ff80ff, 0 0 6px #80ffff;
+  color: #0f172a;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
   transition: all 0.2s ease;
 }
 
 button:hover,
 .btn:hover {
-  background: #481c3aff;
-  box-shadow: 0 0 8px #462846ff, 0 0 15px #264747ff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  background: #fdf3c7;
 }
 
-/* Inputs */
 input,
 textarea {
-  background: #1a1a1a;
-  border: 1px solid #3a1d31ff;
-  border-radius: 8px;
-  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #dbe3ec;
+  border-radius: 10px;
+  padding: 10px 12px;
   outline: none;
-  box-shadow: 0 0 3px #80ffff inset;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 input:focus,
 textarea:focus {
-  border-color: #331b33ff;
-  box-shadow: 0 0 5px #ff80ff inset, 0 0 5px #80ffff inset;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* Links */
 a {
   text-decoration: none;
-  transition: 0.2s ease;
+  color: inherit;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  text-shadow: 0 0 4px #ff80ff, 0 0 8px #80ffff;
+  color: #2563eb;
 }
 
-/* Cards / Containers */
 .card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid #423d40ff;
-  border-radius: 15px;
-  box-shadow: 0 0 6px #2f1e2fff, 0 0 10px #80ffff;
-  transition: 0.2s;
+  background: #fffef9;
+  border: 1px solid #e9d8a6;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 0 0 12px #ff80ff, 0 0 18px #80ffff;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
 }
 
-/* Text Selection */
+.bg-gray-900,
+.bg-gray-800,
+.bg-gray-950,
+.bg-black,
+.bg-slate-900,
+.bg-zinc-900,
+.bg-\[\#092635\],
+.bg-\[\#081f28\],
+.bg-blue-950,
+.bg-emerald-950 {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+.text-white,
+.text-gray-200,
+.text-gray-300,
+.text-gray-400,
+.text-gray-500,
+.text-slate-400,
+.text-slate-300,
+.text-cyan-400,
+.text-red-300,
+.text-green-400,
+.text-yellow-200,
+.text-pink-300,
+.text-purple-500,
+.text-pink-500,
+.text-zinc-400,
+.text-blue-200 {
+  color: #334155 !important;
+}
+
 ::selection {
-  background: #ff66cc;
-  color: #000;
+  background: #dbeafe;
+  color: #0f172a;
 }

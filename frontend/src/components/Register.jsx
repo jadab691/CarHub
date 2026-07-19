@@ -15,6 +15,7 @@ function Register() {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChanges = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -61,18 +62,27 @@ function Register() {
               />
             </div>
             <div className="mb-4">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter Password"
-                className="w-full px-3 py-3 border rounded-md"
-                required
-                minLength={8}
-                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
-                title="Password must be at least 8 characters long and include uppercase, lowercase, and a number."
-                onChange={handleChanges}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  className="w-full px-3 py-3 border rounded-md pr-10"
+                  required
+                  minLength={8}
+                  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+                  title="Password must be at least 8 characters long and include uppercase, lowercase, and a number."
+                  onChange={handleChanges}
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-600"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
             </div>
 
             <button

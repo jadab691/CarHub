@@ -7,7 +7,7 @@ import Cards from "./Cards";
 
 function Display() {
   const filterData = list.filter((data) => data.catagory === "Frontend");
-  // console.log(filterData);
+
   var settings = {
     dots: true,
     infinite: false,
@@ -42,27 +42,23 @@ function Display() {
       },
     ],
   };
-  return (
-    <>
-      <div className="max-w-screen-2xl cntainer mx-auto md:px-20 py-4">
-        <h1 className="font-semibold text-xl text-amber-950 pb-2">New Arrival</h1>
 
-        <div className="pt-1 pb-10 text-pink-300">
-          <p>
-            Here You Can Find The Most Popular Cars of The Era .
-          </p>
-        </div>
-        {/* card container  */}
-        {/* slder container  */}
-        <div className="slider-container ">
-          <Slider {...settings}>
-            {filterData.map((item) => (
-              <Cards item={item} key={item.id} />
-            ))}
-          </Slider>
-        </div>
+  return (
+    <div className="max-w-screen-2xl mx-auto md:px-20 py-6 px-4">
+      <div className="mb-6">
+        <h1 className="text-2xl font-semibold text-slate-900">Featured Cars</h1>
+        <p className="text-slate-600 mt-2">
+          Browse some of the most popular vehicles available right now.
+        </p>
       </div>
-    </>
+      <div className="slider-container">
+        <Slider {...settings}>
+          {filterData.map((item) => (
+            <Cards item={item} key={item.id} />
+          ))}
+        </Slider>
+      </div>
+    </div>
   );
 }
 

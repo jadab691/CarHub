@@ -1,4 +1,13 @@
 # CarHub
+Actions : 
+1. user can signup  . 
+2. user can login . 
+3. Password must be 8 length , A uppercase and a lowercase . 
+4. user can sell and buy cars . 
+5. admin can login . 
+6. admin can see all user , posted card . 
+7. admin can delet any user , delet any posted cars .
+
 
 railway db connectin query : 
 
@@ -58,4 +67,8 @@ INSERT INTO users (username, email, password, role)
 VALUES ('admin', 'admin@example.com', '$2a$10$YOUR_HASH_HERE', 'admin');
 
 NB: dont forget to install node module. 
+
+admin pass: 
+email: admin@gmail.com
+password : 123Admin
 

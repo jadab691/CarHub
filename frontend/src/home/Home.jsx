@@ -8,10 +8,9 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
-  // Start neon animation for 2s, then fade out
   useEffect(() => {
-    const timer = setTimeout(() => setFadeOut(true), 2000); // after 2s start fade
-    const removeTimer = setTimeout(() => setLoading(false), 2500); // total 2.5s
+    const timer = setTimeout(() => setFadeOut(true), 2000);
+    const removeTimer = setTimeout(() => setLoading(false), 2500);
     return () => {
       clearTimeout(timer);
       clearTimeout(removeTimer);
@@ -28,7 +27,7 @@ function Home() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "#000",
+            backgroundColor: "#f8fafc",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -37,44 +36,22 @@ function Home() {
             transition: "opacity 0.5s ease",
           }}
         >
-          <h1 className="text-6xl font-bold text-white neon-text">CarHub</h1>
-
-          <style>
-            {`
-              .neon-text {
-                color: #fff;
-                text-shadow: 
-                  0 0 5px #00ffff,
-                  0 0 10px #00ffff,
-                  0 0 20px #00ffff,
-                  0 0 40px #00ffff,
-                  0 0 80px #00ffff;
-                animation: flicker 2s ease-in-out forwards;
-                letter-spacing: 3px;
-              }
-
-              @keyframes flicker {
-                0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                  opacity: 1;
-                }
-                20%, 24%, 55% {
-                  opacity: 0.2;
-                }
-              }
-            `}
-          </style>
+          <div className="text-center">
+            <h1 className="text-5xl font-bold text-slate-900 tracking-tight">
+              CarHub
+            </h1>
+            <p className="mt-3 text-slate-600">Loading your next ride…</p>
+          </div>
         </div>
       )}
 
       {!loading && (
-        <>
-          <div>
-            <Navbar />
-            <Banner />
-            <Display />
-            <Footer />
-          </div>
-        </>
+        <div>
+          <Navbar />
+          <Banner />
+          <Display />
+          <Footer />
+        </div>
       )}
     </>
   );

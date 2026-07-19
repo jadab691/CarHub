@@ -10,6 +10,7 @@ function Login() {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate(); // for navigation after login
 
@@ -63,14 +64,23 @@ function Login() {
             </div>
 
             <div className="mb-4">
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="w-full px-3 py-2 border rounded"
-                name="password"
-                onChange={handleChanges}
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter Password"
+                  className="w-full px-3 py-2 border rounded pr-10"
+                  name="password"
+                  onChange={handleChanges}
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-600"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </button>
+              </div>
             </div>
 
             <button

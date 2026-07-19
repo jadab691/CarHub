@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -8,44 +8,41 @@ function BuySale() {
 
   return (
     <>
-    <Navbar/>
-    <div
-      className="min-h-screen flex flex-col items-center justify-center 
-        text-gray-400 "
-    >
-      <h1 className="text-4xl md:text-5xl text-cyan-400 font-bold mb-10 text-center drop-shadow-lg">
-        What do you want to do?
-      </h1>
+      <Navbar />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-6 py-20">
+        <h1 className="text-4xl md:text-5xl text-slate-900 font-bold mb-10 text-center">
+          What would you like to do today?
+        </h1>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Buy Card */}
-        <div
-          className=" bg-black text-purple-700 font-bold rounded-2xl shadow-2xl hover:scale-105 transform  transition duration-300 flex flex-col items-center justify-center p-12 cursor-pointer"
-          onClick={() => {
-            navigate("/buy");
-          }}
-        >
-          <div className="text-3xl mb-4">💰 Buy</div>
-          <div className="text-center text-purple-500">
-            Find your dream car and make it yours today!
+        <div className="flex flex-col md:flex-row gap-8 w-full max-w-4xl">
+          <div
+            className="flex-1 rounded-3xl border border-slate-200 bg-white p-12 shadow-[0_20px_60px_rgba(15,23,42,0.06)] hover:-translate-y-1 transition duration-300 cursor-pointer"
+            onClick={() => navigate("/buy")}
+          >
+            <div className="text-3xl mb-4">💰</div>
+            <div className="text-xl font-semibold text-slate-900">
+              Buy a car
+            </div>
+            <div className="mt-3 text-slate-600">
+              Find your dream car and make it yours today.
+            </div>
           </div>
-        </div>
 
-        {/* Sale Card */}
-        <div
-          className="bg-black text-pink-600 font-bold rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300 flex flex-col items-center justify-center p-12 cursor-pointer"
-          onClick={() => {
-            navigate("/sale");
-          }}
-        >
-          <div className="text-3xl mb-4">🚗 Sale</div>
-          <div className="text-center text-pink-500">
-            Sell your car easily and get the best price!
+          <div
+            className="flex-1 rounded-3xl border border-slate-200 bg-white p-12 shadow-[0_20px_60px_rgba(15,23,42,0.06)] hover:-translate-y-1 transition duration-300 cursor-pointer"
+            onClick={() => navigate("/sale")}
+          >
+            <div className="text-3xl mb-4">🚗</div>
+            <div className="text-xl font-semibold text-slate-900">
+              Sell a car
+            </div>
+            <div className="mt-3 text-slate-600">
+              List your vehicle easily and reach the right buyers.
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 }
